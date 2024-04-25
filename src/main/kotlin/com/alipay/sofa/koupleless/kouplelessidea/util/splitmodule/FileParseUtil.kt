@@ -104,12 +104,6 @@ object FileParseUtil {
     }
 
     fun parseAllSubPoms(projPath:String):List<File>{
-        // 如果是多 bundle：
-        val appFolder = getAppFolder(projPath)
-        if(appFolder.exists()){
-            return appFolder.walk().filter { it.name=="pom.xml" }.toList()
-        }
-
         // 如果是单 bundle：
         if(isBundle(projPath)){
             return listOf(parsePomByBundle(projPath))
@@ -155,15 +149,7 @@ object FileParseUtil {
     }
 
     fun parseBootstrapPom(projPath: String):File{
-        val pom = File(StrUtil.join(FILE_SEPARATOR,projPath,"app","bootstrap","pom.xml"))
-        if(pom.exists()){
-            return pom
-        }
         return File(StrUtil.join(FILE_SEPARATOR,projPath,"pom.xml"))
-    }
-
-    fun getAppFolder(projPath: String):File{
-        return File(StrUtil.join(FILE_SEPARATOR,projPath,"app"))
     }
 
     fun listDirectory(file:File):List<File>{

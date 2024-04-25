@@ -64,11 +64,7 @@ class ModuleContext(parent: SplitModuleContext): ProjectContext(parent) {
 
     override fun getResourceRoot():String{
         requireNotNull(moduleTemplateType){"请先选择模块模板"}
-        return if(moduleTemplateType == SplitConstants.Labels.SINGLE_BUNDLE_TEMPLATE.tag){
-                StrUtil.join(FileUtil.FILE_SEPARATOR, projectPath, "src","main","resources")
-            }else{
-                StrUtil.join(FileUtil.FILE_SEPARATOR, projectPath, "app", "bootstrap","src","main","resources")
-            }
+        return StrUtil.join(FileUtil.FILE_SEPARATOR, projectPath, "src","main","resources")
     }
 
     override fun getParserConfig(): ParserConfiguration? {

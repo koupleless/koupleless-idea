@@ -406,21 +406,12 @@ class ModuleDescriptionPanel(private val proj: Project,titleComp: Component) : C
     fun getModuleMapperLocation(): String? {
         val moduleTemplateType = getModuleTemplateType()
         val modulePath = getModulePath() ?:return null
-        return if(moduleTemplateType == SplitConstants.Labels.SINGLE_BUNDLE_TEMPLATE.tag){
-            StrUtil.join(IDEConstants.SEPARATOR, modulePath, "src","main","resources","mapper")
-        }else{
-            StrUtil.join(IDEConstants.SEPARATOR, modulePath, "app", "service","src","main","resources","mapper")
-        }
+        return StrUtil.join(IDEConstants.SEPARATOR, modulePath, "src","main","resources","mapper")
     }
 
     fun getModuleMybatisDir():String?{
-        val moduleTemplateType = getModuleTemplateType()
         val modulePath = getModulePath() ?:return null
         val packageName = getModulePackageName() ?:return null
-        return if(moduleTemplateType == SplitConstants.Labels.SINGLE_BUNDLE_TEMPLATE.tag){
-            StrUtil.join(IDEConstants.SEPARATOR, modulePath, "src","main","java",packageName.replace(".",IDEConstants.SEPARATOR),"common","dal","mybatis")
-        }else{
-            StrUtil.join(IDEConstants.SEPARATOR, modulePath, "app", "service","src","main","java",packageName.replace(".",IDEConstants.SEPARATOR),"common","dal","mybatis")
-        }
+        return StrUtil.join(IDEConstants.SEPARATOR, modulePath, "src","main","java",packageName.replace(".",IDEConstants.SEPARATOR),"common","dal","mybatis")
     }
 }

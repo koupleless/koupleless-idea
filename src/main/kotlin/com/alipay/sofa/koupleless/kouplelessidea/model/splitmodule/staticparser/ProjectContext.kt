@@ -43,7 +43,7 @@ open class ProjectContext(parent: SplitModuleContext) {
     val analyseConfig = AnalyseConfig()
 
     open fun getResourceRoot():String{
-        return StrUtil.join(FileUtil.FILE_SEPARATOR,projectPath,"app","bootstrap","src","main","resources")
+        return ""
     }
 
     fun getSpringResourceDir():String{

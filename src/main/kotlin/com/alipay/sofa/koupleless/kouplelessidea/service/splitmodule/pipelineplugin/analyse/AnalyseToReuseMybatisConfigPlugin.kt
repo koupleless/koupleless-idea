@@ -380,12 +380,6 @@ class AnalyseToReuseMybatisConfigPlugin(private val contentPanel: ContentPanel):
         return StrUtil.join(FileUtil.FILE_SEPARATOR, moduleDalDir, SplitConstants.MYBATIS_EXTRA_CONFIGURATION)
     }
 
-    private fun getDefaultConfigLocationPathInModule(splitModuleContext: SplitModuleContext):String{
-        val modulePath = splitModuleContext.moduleContext.getModulePath()
-        val resourceDir = StrUtil.join(FileUtil.FILE_SEPARATOR,modulePath,"app","service","src","main","resources")
-        val mybatisLoc = SplitConstants.DEFAULT_MYBATIS_CONFIG_CLASSPATH_LOCATION.replace("/",FileUtil.FILE_SEPARATOR)
-        return StrUtil.join(FileUtil.FILE_SEPARATOR, resourceDir, mybatisLoc)
-    }
 
     /**
      * configLocation 属性如：<property name="configLocation" value="classpath:mybatisconfig/mybatis-config.xml"/>
@@ -462,16 +456,11 @@ class AnalyseToReuseMybatisConfigPlugin(private val contentPanel: ContentPanel):
         // 设置 config
         sqlSessionFactoryInfo.configLocation?.let {
             // 复制一份基座 config 至默认位置：SplitConstants.DEFAULT_MAPPER_CONFIG_CLASSPATH_LOCATION
-            val integrationContext = splitModuleContext.integrationStageContext.integrateContext
-            val configLocationTgtPath = getDefaultConfigLocationPathInModule(splitModuleContext)
             val bundlePath = FileParseUtil.parseBundlePath(sqlSessionFactoryInfo.beanInfo.filePath)
             val configLocationSrcPath =getConfigLocationPathInBase(bundlePath,it)
             if(configLocationSrcPath==null){
                 contentPanel.printMavenLog("未找到对应的 configLocation 对应的文件，请自行配置")
-            }else{
-                integrationContext.setXMLPathToCopy(configLocationTgtPath,configLocationSrcPath)
             }
-
         }
 
         // 1. 复制一份默认数据库配置至模块里
