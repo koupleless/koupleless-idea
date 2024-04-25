@@ -43,8 +43,11 @@ dependencies{
     implementation("org.yaml:snakeyaml:2.1")
     // 修改 properties 使用
     implementation("org.apache.commons:commons-configuration2:2.9.0")
+    implementation("commons-beanutils:commons-beanutils:1.9.4")
     implementation("commons-jxpath:commons-jxpath:1.3")
 
+    // json 序列化
+    implementation("com.alibaba:fastjson:1.2.83")
     // 测试使用
     testImplementation(kotlin("test"))
     testImplementation("junit:junit:4.13.1")

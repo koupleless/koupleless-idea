@@ -11,4 +11,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "koupleless-idea"
+rootProject.name = "kouplelessIDE"

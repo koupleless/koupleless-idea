@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>logo</title>
+    <defs>
+        <linearGradient x1="100%" y1="0%" x2="38.2313129%" y2="72.508538%" id="linearGradient-1">
+            <stop stop-color="#2098FF" offset="0%"></stop>
+            <stop stop-color="#285CF7" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="0%" x2="0%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#285CF7" offset="0%"></stop>
+            <stop stop-color="#2098FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="玲珑0.1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-17" transform="translate(-53.000000, -59.000000)" fill-rule="nonzero">
+            <g id="logo" transform="translate(53.000000, 59.000000)">
+                <path d="M12,0 L19,0 C19.5522847,-1.01453063e-16 20,0.44771525 20,1 L20,8 L20,8 C15.581722,8 12,4.418278 12,0 L12,0 L12,0 Z" id="矩形备份-8" fill="url(#linearGradient-1)"></path>
+                <path d="M20,19 L20,14.3333333 C20,13.7810486 19.5522847,13.3333333 19,13.3333333 L13.3333333,13.3333333 C9.651435,13.3333333 6.66666667,10.348565 6.66666667,6.66666667 L6.66666667,1 C6.66666667,0.44771525 6.21895142,-5.36733189e-14 5.66666667,0 L1,0 C0.44771525,1.01453063e-16 -6.76353751e-17,0.44771525 0,1 L0,19 C6.76353751e-17,19.5522847 0.44771525,20 1,20 L19,20 C19.5522847,20 20,19.5522847 20,19 Z" id="L备份-5" fill="url(#linearGradient-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
