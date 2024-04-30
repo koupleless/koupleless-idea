@@ -1,2 +1,2 @@
-# koupleless-idea
-koupleless idea plugin help user to split module
+# kouplelessIDE
+kouplelessIDE plugin help user to split module
