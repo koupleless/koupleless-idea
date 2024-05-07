@@ -19,7 +19,7 @@ object ScanModuleDefaultBeanPlugin: PipelinePlugin() {
         // 1. 解析 xml 文件中模块 java 文件对应的 bean
         scanModuleBeanInXml(splitModuleContext)
 
-        // 2. 解析 java 文件中的 bean、bean 的类名到接口名的对应、SofaService 注意顺序！
+        // 2. 解析 java 文件中的 bean、bean 的类名到接口名的对应，注意顺序！
         val javaPaths = moduleContext.getJavaFiles()
         ParseJavaService.parseOnly(javaPaths,
             parserConfiguration,

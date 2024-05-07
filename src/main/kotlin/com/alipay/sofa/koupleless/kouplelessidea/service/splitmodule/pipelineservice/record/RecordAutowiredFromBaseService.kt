@@ -10,12 +10,12 @@ import com.intellij.openapi.project.Project
  * @author lipeng
  * @date 2024/5/7 16:20
  */
-class RecordModuleInvokeBaseBeanService(proj: Project): PipelineService(proj) {
+class RecordAutowiredFromBaseService(proj: Project): PipelineService(proj) {
     override fun initService(splitModuleContext: SplitModuleContext) {
         this.addPlugin(RecordAutowiredFromBasePlugin(getContentPanel()))
     }
 
     override fun getName(): String {
-        return "记录 SOFAService 服务"
+        return "记录 AutowiredFromBase 服务"
     }
 }

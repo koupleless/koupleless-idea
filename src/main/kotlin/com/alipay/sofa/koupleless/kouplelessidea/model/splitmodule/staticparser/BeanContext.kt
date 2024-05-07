@@ -3,12 +3,11 @@ package com.alipay.sofa.koupleless.kouplelessidea.model.splitmodule.staticparser
 import cn.hutool.core.collection.ConcurrentHashSet
 import cn.hutool.core.util.StrUtil
 import com.alipay.sofa.koupleless.kouplelessidea.util.CollectionUtil.addOrPutList
-import com.alipay.sofa.koupleless.kouplelessidea.util.CollectionUtil.addOrPutSet
 import java.util.concurrent.ConcurrentHashMap
 
 
 /**
- * @description: Bean 上下文，包括该上下文中的 bean信息 和 SofaService信息
+ * @description: Bean 上下文，包括该上下文中的 bean信息
  * @author lipeng
  * @date 2023/9/8 15:04
  */

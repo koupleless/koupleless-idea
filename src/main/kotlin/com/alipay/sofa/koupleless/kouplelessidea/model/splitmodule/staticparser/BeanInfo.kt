@@ -35,11 +35,9 @@ class BeanInfo(val beanName:String?,val fullClassName:String?) {
 
 
     /**
-     * 缺失的外部 Bean，key 为该引用的BeanRef，value 为缺失的外部 SofaService 对应的 BeanInfo，需要发布为 SofaService
+     * 缺失的外部 Bean，key 为该引用的BeanRef，value 为缺失的外部 Bean 对应的 BeanInfo
      */
     val missedOutsideBean = mutableMapOf<BeanRef,MutableSet<BeanInfo>>()
-
-    val missedOutsideBeanToReport = mutableMapOf<BeanRef,MutableSet<BeanInfo>>()
 
     var parentContext: BeanContext? = null
 
