@@ -44,12 +44,8 @@ interface SplitConstants {
 
         val ARGS_CONSTRUCTOR_ANNOTATIONS = setOf("RequiredArgsConstructor")
 
-        const val SOFA_SERVICE_ANNOTATION = "SofaService"
 
-        const val SOFA_REFERENCE_ANNOTATION = "SofaReference"
-
-        const val OSGI_REFERENCE_ANNOTATION = "OsgiReference"
-
+        const val AUTOWIRED_FROM_BASE_ANNOTATION = "AutowiredFromBase"
         /**
          * 模板默认版本
          */

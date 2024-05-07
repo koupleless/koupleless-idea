@@ -12,7 +12,7 @@ import com.alipay.sofa.koupleless.kouplelessidea.util.constant.SplitConstants
  * @author lipeng
  * @date 2023/11/8 14:44
  */
-class CheckInvokedBeanWithoutTgtBasePlugin(private val contentPanel: ContentPanel): PipelinePlugin() {
+class CheckInvokedBaseBeanPlugin(private val contentPanel: ContentPanel): PipelinePlugin() {
     override fun doProcess(splitModuleContext: SplitModuleContext) {
         val beanContextInSrcBase = splitModuleContext.srcBaseContext.beanContext
         if(beanContextInSrcBase.missedOutsideBean.isEmpty()) return
@@ -51,7 +51,7 @@ class CheckInvokedBeanWithoutTgtBasePlugin(private val contentPanel: ContentPane
 
     private fun checkBeanInvoke(splitModuleContext: SplitModuleContext){
         val beanContextInSrcBase = splitModuleContext.srcBaseContext.beanContext
-        contentPanel.printErrorLog("检测到基座调用模块，请检查是否符合拆分需求，调用如下：")
+        contentPanel.printErrorLog("检测到基座调用模块，请根据文档自行修改：https://koupleless.io/docs/tutorials/module-development/module-and-base-communication/#%E5%9F%BA%E5%BA%A7%E8%B0%83%E7%94%A8%E6%A8%A1%E5%9D%97，调用如下：")
         var tips = ""
         beanContextInSrcBase.missedOutsideBean.forEach { beanInfo ->
             val beanType = beanInfo.getClassOrInterfaceType()
