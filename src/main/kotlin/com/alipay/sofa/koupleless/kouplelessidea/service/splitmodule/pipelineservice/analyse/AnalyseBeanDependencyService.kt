@@ -3,7 +3,7 @@ package com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelinese
 import com.alipay.sofa.koupleless.kouplelessidea.model.splitmodule.staticparser.SplitModuleContext
 import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineplugin.analyse.AnalyseModuleBeanDependencyPlugin
 import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineplugin.analyse.AnalyseSrcBaseBeanDependencyPlugin
-import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineplugin.check.CheckInvokedBeanWithoutTgtBasePlugin
+import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineplugin.check.CheckInvokedBaseBeanPlugin
 import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineservice.PipelineService
 import com.intellij.openapi.project.Project
 
@@ -18,7 +18,7 @@ class AnalyseBeanDependencyService(proj:Project): PipelineService(proj) {
         this.addPlugin(AnalyseModuleBeanDependencyPlugin)
             .addPlugin(AnalyseSrcBaseBeanDependencyPlugin)
 
-        this.addPlugin(CheckInvokedBeanWithoutTgtBasePlugin(getContentPanel()))
+        this.addPlugin(CheckInvokedBaseBeanPlugin(getContentPanel()))
     }
 
     override fun getName(): String {

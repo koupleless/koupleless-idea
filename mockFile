@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sofa="http://schema.alipay.com/sofa/schema/service" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                    http://schema.alipay.com/sofa/schema/service http://schema.alipay.com/sofa/sofa-service-4-0-0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="byName">
+       
+    <bean id="myClass" class="com.mock.MyClass">
+    </bean>
+    
+    <sofa:service ref="myClass" interface="com.mock.MyInterface"></sofa:service>
+    
+    <sofa:reference id="myNewClass" interface="com.mock.MyInterface"/>
+    
+</beans>

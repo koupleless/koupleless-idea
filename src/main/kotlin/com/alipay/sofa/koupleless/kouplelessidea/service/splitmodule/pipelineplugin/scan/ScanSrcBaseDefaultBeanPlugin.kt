@@ -19,7 +19,7 @@ object ScanSrcBaseDefaultBeanPlugin: PipelinePlugin() {
         // 1. 解析 xml 中的 bean
         scanSrcBaseBeanInXml(splitModuleContext)
 
-        // 2. 解析 java 文件中的 bean，解析 bean 的类名到接口名的对应、SofaService，和配置
+        // 2. 解析 java 文件中的 bean，解析 bean 的类名到接口名的对应，和配置
         ParseJavaService.parseFromCache(
             srcBaseContext,
             listOf(DefaultBeanVisitor, BeanExtraInfoVisitor,MethodBeanVisitor, BeanDependedOnVisitor, MybatisConfigVisitor, MybatisMethodConfigVisitor,MybatisMapperInterfaceVisitor),

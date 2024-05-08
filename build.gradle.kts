@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies{
-    implementation("cn.hutool:hutool-all:5.8.8")
+    implementation("cn.hutool:hutool-all:5.8.25")
     implementation(kotlin("stdlib"))
     // OpenAPI 生成使用
     implementation("io.swagger:swagger-annotations:1.6.6")

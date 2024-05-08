@@ -19,7 +19,6 @@ class BeanInfo(val beanName:String?,val fullClassName:String?) {
      * 实现类的路径，即：java 文件对应的路径
      */
     var filePath = ""
-    var publishedAsSofaService = false
     /**
      *  三种方式：byType, byName, no
      */
@@ -36,11 +35,9 @@ class BeanInfo(val beanName:String?,val fullClassName:String?) {
 
 
     /**
-     * 缺失的外部 Bean，key 为该引用的BeanRef，value 为缺失的外部 SofaService 对应的 BeanInfo，需要发布为 SofaService
+     * 缺失的外部 Bean，key 为该引用的BeanRef，value 为缺失的外部 Bean 对应的 BeanInfo
      */
     val missedOutsideBean = mutableMapOf<BeanRef,MutableSet<BeanInfo>>()
-
-    val missedOutsideBeanToReport = mutableMapOf<BeanRef,MutableSet<BeanInfo>>()
 
     var parentContext: BeanContext? = null
 
@@ -84,10 +81,6 @@ class BeanInfo(val beanName:String?,val fullClassName:String?) {
 
     fun addMissedOutsideBean(key: BeanRef, value: BeanInfo){
         addOrPutSet(missedOutsideBean,key,value)
-    }
-
-    fun addMissedOutsideBeanToReport(key: BeanRef, value: BeanInfo){
-        addOrPutSet(missedOutsideBeanToReport,key,value)
     }
 
     fun registerXMLNode(name: String, node: XMLNode) {

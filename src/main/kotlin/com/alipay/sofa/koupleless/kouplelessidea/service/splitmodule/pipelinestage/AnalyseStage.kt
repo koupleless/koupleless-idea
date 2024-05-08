@@ -26,9 +26,6 @@ class AnalyseStage(proj: Project): PipelineStage(proj) {
         // 分析需要添加的配置模块
         this.addService(AnalyseToAddConfigService(proj))
 
-        // 分析模块依赖的rpc服务
-        this.addService(AnalyseModuleXMLNodeService(proj))
-
         // 分析Bean依赖和Bean调用
         this.addService(AnalyseBeanDependencyService(proj))
     }

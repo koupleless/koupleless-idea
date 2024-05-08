@@ -1,5 +1,6 @@
 package com.alipay.sofa.koupleless.kouplelessidea.parser
 
+import com.alipay.sofa.koupleless.kouplelessidea.model.splitmodule.staticparser.BeanInfo
 import com.alipay.sofa.koupleless.kouplelessidea.util.constant.SplitConstants
 import com.github.javaparser.StaticJavaParser
 import com.github.javaparser.ast.Modifier
@@ -41,5 +42,15 @@ object BuildJavaService {
         method.body.get().addStatement(0,stat)
 
         return method
+    }
+
+    fun buildAutowiredFromBaseAnno(beanInfo: BeanInfo): AnnotationExpr {
+        val name = Name(SplitConstants.AUTOWIRED_FROM_BASE_ANNOTATION)
+        beanInfo.beanName?.let {
+            val pairs = NodeList(MemberValuePair("name", StringLiteralExpr(beanInfo.beanName)))
+            return NormalAnnotationExpr(name, pairs)
+        }
+
+        return MarkerAnnotationExpr(name)
     }
 }

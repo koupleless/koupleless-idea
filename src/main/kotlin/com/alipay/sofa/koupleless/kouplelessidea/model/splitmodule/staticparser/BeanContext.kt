@@ -3,12 +3,11 @@ package com.alipay.sofa.koupleless.kouplelessidea.model.splitmodule.staticparser
 import cn.hutool.core.collection.ConcurrentHashSet
 import cn.hutool.core.util.StrUtil
 import com.alipay.sofa.koupleless.kouplelessidea.util.CollectionUtil.addOrPutList
-import com.alipay.sofa.koupleless.kouplelessidea.util.CollectionUtil.addOrPutSet
 import java.util.concurrent.ConcurrentHashMap
 
 
 /**
- * @description: Bean 上下文，包括该上下文中的 bean信息 和 SofaService信息
+ * @description: Bean 上下文，包括该上下文中的 bean信息
  * @author lipeng
  * @date 2023/9/8 15:04
  */
@@ -22,18 +21,9 @@ class BeanContext(parent: ProjectContext) {
      */
     val allBeanInfo:ConcurrentHashSet<BeanInfo> = ConcurrentHashSet()
     /**
-     * 本上下文中的 Bean 将调用其它外部上下文的Bean，但外部Bean没有发布成 SofaService，可以将外部Bean发布为 SofaService，并在本Bean中以 SofaReference 引用
+     * 本上下文中的 Bean 将调用其它外部上下文的Bean
      */
     val missedOutsideBean = mutableSetOf<BeanInfo>()
-    /**
-     * 本上下文中的 Bean 将调用其它外部上下文的Bean，但外部Bean没有发布成 SofaService，不会自动将外部Bean发布为 SofaService，需要告知用户调用缺失情况
-     */
-    val missedOutsideBeanToReport = mutableSetOf<BeanInfo>()
-
-    /**
-     * 缺失的外部 SofaService，需要告知用户
-     */
-    val missedOutsideSofaServiceToReport = mutableSetOf<BeanInfo>()
 
     val parentContext = parent
     private fun putClassNameToBeanInfo(className:String, info: BeanInfo){
@@ -114,11 +104,6 @@ class BeanContext(parent: ProjectContext) {
         key.parentBean.addMissedOutsideBean(key,value)
     }
 
-    fun addMissedOutsideBeanToReport(key: BeanRef, value: BeanInfo){
-        missedOutsideBeanToReport.add(key.parentBean)
-        key.parentBean.addMissedOutsideBeanToReport(key,value)
-    }
-
     fun getBeansWithClassName():MutableCollection<BeanInfo>{
         return classNameToBeanInfo.values
     }
@@ -128,8 +113,6 @@ class BeanContext(parent: ProjectContext) {
         beanNameToBeanInfo.clear()
         interfaceToBeanInfo.clear()
         missedOutsideBean.clear()
-        missedOutsideBeanToReport.clear()
-        missedOutsideSofaServiceToReport.clear()
         allBeanInfo.clear()
     }
 }

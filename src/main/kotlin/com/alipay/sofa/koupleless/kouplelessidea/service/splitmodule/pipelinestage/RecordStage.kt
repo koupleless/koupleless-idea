@@ -1,6 +1,7 @@
 package com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelinestage
 
 import com.alipay.sofa.koupleless.kouplelessidea.model.splitmodule.staticparser.SplitModuleContext
+import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineservice.record.RecordAutowiredFromBaseService
 import com.alipay.sofa.koupleless.kouplelessidea.service.splitmodule.pipelineservice.record.RecordXMLNodeToMoveService
 import com.intellij.openapi.project.Project
 
@@ -14,6 +15,8 @@ class RecordStage(proj: Project): PipelineStage(proj) {
     override fun initStage(splitModuleContext: SplitModuleContext) {
         // 记录要移动的 XML节点
         this.addService(RecordXMLNodeToMoveService(proj))
+        // 记录要修改的 模块调用基座Bean
+        this.addService(RecordAutowiredFromBaseService(proj))
     }
 
     override fun getName(): String {

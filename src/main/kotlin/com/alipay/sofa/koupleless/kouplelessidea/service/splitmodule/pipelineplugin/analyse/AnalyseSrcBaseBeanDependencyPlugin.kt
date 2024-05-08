@@ -13,15 +13,15 @@ import com.alipay.sofa.koupleless.kouplelessidea.util.splitmodule.AnalyseBeanUti
 object AnalyseSrcBaseBeanDependencyPlugin: PipelinePlugin() {
     override fun doProcess(splitModuleContext: SplitModuleContext) {
         val moduleContext = splitModuleContext.moduleContext
-        val beanContext = moduleContext.beanContext
+        val beanContextInModule = moduleContext.beanContext
         val beanContextInSrcBase = splitModuleContext.srcBaseContext.beanContext
 
         beanContextInSrcBase.allBeanInfo.forEach {beanInfo->
             beanInfo.beanDependOn.forEach { (_, beanRef) ->
                 if(beanRef.definedInXML){
-                    AnalyseBeanUtil.analyseBeanRefInXML(beanRef,beanContextInSrcBase,beanContext)
+                    AnalyseBeanUtil.analyseBeanRefInXML(beanRef,beanContextInSrcBase,beanContextInModule)
                 }else{
-                    AnalyseBeanUtil.analyseBeanRefInJava(beanRef,beanContextInSrcBase,beanContext)
+                    AnalyseBeanUtil.analyseBeanRefInJava(beanRef,beanContextInSrcBase,beanContextInModule)
                 }
             }
         }
