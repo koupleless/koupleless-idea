@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:sofa="http://img.alipay.net/dtd/schema/service" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://img.alipay.net/dtd/schema/service http://img.alipay.net/dtd/schema/service/sofa-service.xsd
+         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+         http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd"
+       default-autowire="byName">
+
+    <!--本 xml 用于展示 SOFABoot 的 xsd 文件-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mock.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="mockSqlSessionFactoryBean"/>
+    </bean>
+
+
+    <bean id="mockSqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="mockDataSource"/>
+        <property name="configLocation" value="classpath:mybatisconfig/mybatis-config.xml"/>
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:/sqlmap/order/\.xml</value>
+            </array>
+        </property>
+        <property name="plugins">
+            <array>
+                <bean id="pageInterceptor" class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                            rowBoundsWithCount=true
+                            reasonable=false
+                            supportMethodsArguments=true
+                            pageSizeZero=true
+                            params=pageNum=pageNum;pageSize=pageSize;orderBy=orderBy
+                            offsetAsPageNum=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+
+    <bean id="mockDataSource" class="javax.sql.DataSource"/>
+
+    <bean id="transactionTemplate"
+          class="org.springframework.transaction.support.TransactionTemplate">
+        <property name="transactionManager" ref="transactionManager"/>
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
+    </bean>
+
+    <bean id="mockSqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg index="0" ref="mockSqlSessionFactoryBean"/>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="mockDataSource"/>
+    </bean>
+</beans>

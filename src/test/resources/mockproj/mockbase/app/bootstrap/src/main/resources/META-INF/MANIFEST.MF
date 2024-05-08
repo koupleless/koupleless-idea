@@ -1,0 +1,2 @@
+ABC: 123
+Module-Name: com.mock.bootstrap
